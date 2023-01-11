@@ -174,15 +174,31 @@ export class UserControllerPost implements BaseControllerSpec<UserService> {
                     }
                 }
             }
-            response.clearCookie(SESSION_CONSTANTS.COOKIE_KEY);
-            response.clearCookie(SESSION_CONSTANTS.USERNAME_KEY);
+            response.clearCookie(SESSION_CONSTANTS.COOKIE_KEY, {
+                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+            });
+            response.clearCookie(SESSION_CONSTANTS.USERNAME_KEY, {
+                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+            });
             response.status(204);
             response.send({});
         } catch (error: unknown) {
             Logger.error(failureMessage, error);
             response.status(204);
-            response.clearCookie(SESSION_CONSTANTS.COOKIE_KEY);
-            response.clearCookie(SESSION_CONSTANTS.USERNAME_KEY);
+            response.clearCookie(SESSION_CONSTANTS.COOKIE_KEY, {
+                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+            });
+            response.clearCookie(SESSION_CONSTANTS.USERNAME_KEY, {
+                httpOnly: true,
+                sameSite: "none",
+                secure: true,
+            });
             response.send({});
         }
     };

@@ -100,9 +100,15 @@ const rejectSession = (request: Request, response: Response): boolean => {
     if (doesSessionExist(request)) {
         response.cookie(CONSTANTS.COOKIE_KEY, "deleted", {
             expires: generateCookieDeletionExpiration(),
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
         });
         response.cookie(CONSTANTS.USERNAME_KEY, "deleted", {
             expires: generateCookieDeletionExpiration(),
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
         });
         return true;
     }
@@ -144,11 +150,13 @@ const addSession = async (
 
     response.cookie(CONSTANTS.COOKIE_KEY, encryptedSession, {
         expires: generateCookieExpiration(),
+        httpOnly: true,
         sameSite: "none",
         secure: true,
     });
     response.cookie(CONSTANTS.USERNAME_KEY, username, {
         expires: generateCookieExpiration(),
+        httpOnly: true,
         sameSite: "none",
         secure: true,
     });
