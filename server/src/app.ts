@@ -11,7 +11,6 @@ import express, {
 import { Client } from "pg";
 
 import { cookieMiddleware } from "../common/middleware/sessionMethods";
-import config from "./config.json";
 import { AppController } from "./controller";
 import { UserService } from "./modules/user/user.service";
 /**
@@ -66,7 +65,7 @@ class LanguageTrackerApplication {
                 );
             });
         this.app = express();
-        this.port = config.env === undefined ? 3001 : config.env;
+        this.port = Number(process.env.PORT) ?? 3001;
         this.userService = new UserService();
         this.app.use(
             (request: Request, response: Response, next: NextFunction) => {
