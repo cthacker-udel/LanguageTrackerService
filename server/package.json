@@ -7,7 +7,7 @@
         "start": "node ./build/src/app.js",
         "clean": "rimraf build",
         "full-clean": "rimraf build node_modules package-lock.json dist",
-        "build": "tsc",
+        "build": "npx tsc",
         "lint": "eslint ./",
         "reset": "npm run build && npm run start",
         "test": "echo \"Error: no test specified\" && exit 1"
