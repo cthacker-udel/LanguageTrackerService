@@ -10,6 +10,7 @@ import {
     activityPostSchema,
     analyzeUser,
     Logger,
+    getSessionUsername,
 } from "../../../../common";
 import type { ActivityService } from "../service/activity.service";
 
@@ -93,9 +94,10 @@ export class ActivityControllerPost
                     }
                 }
             } else {
+                const session_username = getSessionUsername(request);
                 response.status(401);
                 response.send({
-                    result: "Must make request with username within cookie",
+                    result: `Must make request with username within cookie ${session_username}, ${username}`,
                 });
             }
         } catch (error: unknown) {

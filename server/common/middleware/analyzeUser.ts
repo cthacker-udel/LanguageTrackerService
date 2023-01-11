@@ -14,12 +14,6 @@ export const analyzeUser = (
     username: string | undefined,
 ): boolean => {
     const session_username = getSessionUsername(request);
-    console.log(
-        "session_username=",
-        session_username,
-        "and username=",
-        username,
-    );
     if (session_username === undefined || username === undefined) {
         return false;
     }
