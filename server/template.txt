@@ -1,0 +1,8 @@
+PGUSER=dbuser
+PGHOST=database.server.com
+PGPASSWORD=secretpassword
+PGDATABASE=mydb
+PGPORT=3211
+SESSION_HASH_ITER=99999
+
+# Rename this file .env and keep it at the same hierarchical level to load in environment variables
