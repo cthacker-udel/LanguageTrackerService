@@ -1,8 +1,8 @@
+/* eslint-disable unicorn/prefer-node-protocol -- disabled */
 /* eslint-disable node/no-process-env -- disabled */
 /* eslint-disable @typescript-eslint/no-extraneous-class -- disabled */
-import { createHmac, pbkdf2Sync, randomBytes, randomInt } from "node:crypto";
-
 import type { EncryptionData } from "@types";
+import { createHmac, pbkdf2Sync, randomBytes, randomInt } from "crypto";
 
 import { normalizeText } from "../../../common";
 
