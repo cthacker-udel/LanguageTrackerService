@@ -144,11 +144,13 @@ const addSession = async (
 
     response.cookie(CONSTANTS.COOKIE_KEY, encryptedSession, {
         expires: generateCookieExpiration(),
-        sameSite: "lax",
+        sameSite: "none",
+        secure: true,
     });
     response.cookie(CONSTANTS.USERNAME_KEY, username, {
         expires: generateCookieExpiration(),
-        sameSite: "lax",
+        sameSite: "none",
+        secure: true,
     });
 
     return true;
@@ -214,7 +216,8 @@ const cookieMiddleware = (
         if (
             (request.url.includes("login") ||
                 request.url.includes("addUser") ||
-                request.url.includes("validateSession")) &&
+                request.url.includes("validateSession") ||
+                request.url.includes("health")) &&
             !doesSessionExist(request)
         ) {
             next();

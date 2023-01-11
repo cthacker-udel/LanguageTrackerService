@@ -94,6 +94,10 @@ class LanguageTrackerApplication {
      */
     public start(): void {
         this.addController();
+        this.app.get("/health", (_request: Request, response: Response) => {
+            response.status(200);
+            response.send({});
+        });
         this.app.listen(this.port, () => {
             console.log(`Listening on port ${this.port}...`);
         });
