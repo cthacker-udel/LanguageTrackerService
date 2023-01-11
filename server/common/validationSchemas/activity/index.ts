@@ -1,0 +1,1 @@
+export { activityPostSchema } from "./activityPostSchema";
