@@ -12,4 +12,5 @@ export const activityPostSchema = Joi.object({
     time_type: Joi.number().required(),
     title: Joi.string().required().max(75),
     total_time: Joi.number().required(),
+    username: Joi.string().optional(),
 });

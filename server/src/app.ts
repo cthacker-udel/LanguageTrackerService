@@ -65,7 +65,7 @@ class LanguageTrackerApplication {
                 );
             });
         this.app = express();
-        this.port = Number(process.env.PORT) ?? 3001;
+        this.port = process.env.PORT ? Number(process.env.PORT) : 3001;
         this.userService = new UserService();
         this.app.use(
             (request: Request, response: Response, next: NextFunction) => {
