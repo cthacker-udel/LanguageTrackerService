@@ -52,7 +52,7 @@ export class ActivityControllerPost
             } = request.body as Activity;
             const username = getSessionUsername(request);
             const validationResult = activityPostSchema.validate(
-                request.body as Activity & { username: string },
+                request.body as Activity,
             );
             if (
                 activity_date === undefined ||
